@@ -2,6 +2,7 @@ const postsModel = require('../models/postModel')
 const commentsModel = require('../models/commentModel')
 const mongoose = require('mongoose')
 
+//This will create and save new post
 const createPost = async(req, res) => {
     const {title, description, color} = req.body;
     const post = new postsModel({title, description, color});
@@ -15,6 +16,7 @@ const createPost = async(req, res) => {
     }
 }
 
+//Tis will retrieve all posts from the DB
 const getAllPosts = async(req,res)=>{
     try{
         const posts = await postsModel.find();
@@ -26,6 +28,7 @@ const getAllPosts = async(req,res)=>{
     }
 }
 
+//This will retrieve a post by its ID
 const getPostById = async(req,res)=>{
     const id = req.params.id;
     try{
@@ -38,6 +41,7 @@ const getPostById = async(req,res)=>{
     }
 } 
 
+//This will add comments to the post
 const addComments = async(req,res)=>{
     const id = req.params.id
     const {comment} = req.body
@@ -51,6 +55,7 @@ const addComments = async(req,res)=>{
     }
 }
 
+//This will delete a post
 const deletePost = async(req,res) =>{
     const id = req.params.id
     try{

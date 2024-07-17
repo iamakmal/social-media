@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const commentModel = require('./commentModel');
 const Schema = mongoose.Schema;
 
+//This is the model class which defines the attributes of the Post
 const postSchema = new Schema({
     title: {
         type: String,
