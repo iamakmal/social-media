@@ -5,7 +5,7 @@ const {createPost,getAllPosts,getPostById,addComments,deletePost} = require('../
 route.post("/", createPost)
 route.get("/",getAllPosts)
 route.get("/:id",getPostById)
-route.put("/:id/comment",addComments)
+route.put("/:id",addComments)
 route.delete("/:id",deletePost)
 
 module.exports = route

@@ -42,18 +42,29 @@ const getPostById = async(req,res)=>{
 } 
 
 //This will add comments to the post
-const addComments = async(req,res)=>{
-    const id = req.params.id
-    const {comment} = req.body
-    try{
-        const updatedPost = await postsModel.findByIdAndUpdate(id, { $push: {comments: comment }})
-        if(updatedPost){
-            res.status(200).send(updatedPost)
+const addComments = async (req, res) => {
+    const id = req.params.id; 
+    const { comment } = req.body; 
+
+    try {
+        const updatedPost = await postsModel.findByIdAndUpdate(
+            id,
+            { $push: { comments: comment } },
+            { new: true }
+        );
+
+        console.log(updatedPost);
+
+        if (updatedPost) {
+            res.status(200).send(updatedPost);
+        } else {
+            res.status(404).send("Post not found");
         }
-    }catch(error){
-        res.status(500).send(error)
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Server Error");
     }
-}
+};
 
 //This will delete a post
 const deletePost = async(req,res) =>{
