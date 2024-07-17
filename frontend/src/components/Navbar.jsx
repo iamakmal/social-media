@@ -16,8 +16,7 @@ export default function Navbar() {
         axios.post("http://localhost:5000/api/v1/post", data).then(() => {
             setTitle("")
             setDescription("")
-            //After adding note it will return back to All Notes Page
-            //navigate('/allNotes', { replace: true });
+            window.location.reload();
         })
             .catch((error) => {
                 console.log(error.response.data)

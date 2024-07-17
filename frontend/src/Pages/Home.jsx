@@ -23,9 +23,12 @@ export default function Home() {
     <>
     <div className='flex flex-col flex-wrap items-center p-10'>
         {
-            posts.map((post,index)=>(
+            posts.length > 0 ? posts.map((post,index)=>(
                 <PostCard key={index} post={post}/>
-            ))
+            )):
+            <div className='h-screen flex justify-center items-center'>
+                <h1 className="text-xl font-semibold">No Posts Available Right Now Check Back Later</h1>
+            </div>    
         }
     </div>
     </>

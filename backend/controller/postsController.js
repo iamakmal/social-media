@@ -1,5 +1,4 @@
 const postsModel = require('../models/postModel')
-const commentsModel = require('../models/commentModel')
 const mongoose = require('mongoose')
 
 //This will create and save new post

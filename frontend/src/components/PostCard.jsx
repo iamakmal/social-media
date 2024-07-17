@@ -18,18 +18,24 @@ export default function PostCard({post}) {
     }
 
     const addComment = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         const data = {
             comment
         }
-        axios.put(`http://localhost:5000/api/v1/post/${post._id}`, comment).then(() => {
-            console.log("Comment added successfully: ", comment);
-            setComment("");
-        })
-        .catch((error) => {
-            console.log(error)
-        })
-    }
+    
+        axios.put(`http://localhost:5000/api/v1/post/${post._id}`, data)
+            .then(response => {
+                console.log("Comment added successfully", response.data);              
+                setComment("");
+                window.location.reload();
+            })
+            .catch(error => {
+                console.error("Error adding comment:", error);
+                if (error.response) {
+                    console.error("Response data:", error.response.data);
+                }
+            });
+    };
 
     return (
         <>
